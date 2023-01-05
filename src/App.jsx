@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./App.css";
-import { Contador } from "./Components";
+import { Contador, Modal } from "./Components";
 import { useContador } from "./Hooks/useContador";
 
 function App() {
@@ -15,6 +15,8 @@ function App() {
     "David",
     "Pato",
   ]);
+  const [modal, setModal] = useState(false);
+
   return (
     <div className="App">
       {/* <Contador />
@@ -30,11 +32,13 @@ function App() {
         <button onClick={fun2}>-</button>
       </> */}
       <p>Listado de oficina 2</p>
+      <button onClick={() => setModal(true)}>Open modal</button>
       <ul>
         {nombres.map((nombre, i) => (
           <li key={i}>{nombre}</li>
         ))}
       </ul>
+      {modal && <Modal setModal={setModal} />}
     </div>
   );
 }
